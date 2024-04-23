@@ -1,0 +1,32 @@
+Directory for setting up iterative solvers for type-2 NUDFT lin sys.
+FINUFFT notation convention is used here (vs unit circle nodes in iNUFFT).
+Alex Barnett (Nov 2022 - Feb 2023).
+
+Codes
+=====
+
+  Drivers:
+
+test_iNUDFT.m    - main driver for comparing solvers of 1D type 2 NUDFT lin sys
+plot_test_iNUDFT.m - show true and solved functions for a selected experiment
+multi_test_iNUDFT.m - call test_iNUDFT with many parameter values, save output
+
+  Solvers:
+
+solv_dense.m     - direct dense O(N^3) solver
+solv_CGN.m       - solve by CG on Toeplitz normal eqns, Strang precond
+solv_adjwei.m    - poor approx solve via single sinc2-weighted adjoint matvec
+solv_FPadjwei.m  - solve by fixed-pt iter on sinc2-weighted adjoint matvec
+solv_CGAN.m      - solve by CG on adjoint normal eqns (not Toep), sinc2 precond
+solv_FDToepN.m   - fast direct Toeplitz solver applied to normal eqns
+wrapper_INUDFT.m - wrapper to Wilber-Epperley iNUFFT fast direct solver
+
+  Helpers:
+
+densemat_nudft.m - fill system matrix
+densemat_nudft_vander.m - fill version using Heather's Vandermonde convention
+
+do_nufft_vander.m - wrapper from Vandermonde convention to call FINUFFT
+                   (apply 1D NUDFT type 2)
+See also: Contents.m
+

@@ -1,0 +1,145 @@
+>> test_iNUDFT
+
+------------- NU dist=1 (jittered grid): -----------------
+
+dense (slow exact) b and resid meas... kappa(A) = 2.04
+solver 1 (dense direct)...
+	0.901 s   	rel l2 err 3.29e-15    	resid rel l2 nrm 3.32e-15
+solver 2 (CG normal eqns)...
+	flag=0, with 13 iters (rel resid nrm 5.63e-07)
+	0.0049 s   	rel l2 err 8.35e-07    	resid rel l2 nrm 6.59e-07
+solver 3 (Strang PCG nor eqns)...
+	flag=0, with 14 iters (rel resid nrm 4.23e-07)
+	0.0069 s   	rel l2 err 6.29e-07    	resid rel l2 nrm 5.01e-07
+solver 4 (adj matvec sinc2 wei)...
+	0.00253 s   	rel l2 err 0.216    	resid rel l2 nrm 0.19
+solver 5 (FP adj wei)...
+	done with 23 iters (rel resid nrm 9.65e-07)
+	0.0211 s   	rel l2 err 1.52e-06    	resid rel l2 nrm 9.65e-07
+solver 6 (CG adj nor eqns)...
+	flag=0, with 13 iters (rel resid nrm 7.04e-07)
+	0.0135 s   	rel l2 err 7.87e-07    	resid rel l2 nrm 7.04e-07
+solver 7 (sinc2 PCG adj nor)...
+	flag=0, with 12 iters (rel resid nrm 6.15e-07)
+	0.017 s   	rel l2 err 7.1e-07    	resid rel l2 nrm 6.15e-07
+solver 8 (GMRES adj nor eqns)...
+	flag=0, with 13 iters (rel resid nrm 6.59e-07)
+	0.109 s   	rel l2 err 8.35e-07    	resid rel l2 nrm 6.59e-07
+solver 9 (INUDFT, wrapped)...
+	0.256 s   	rel l2 err 5.41e-09    	resid rel l2 nrm 5.06e-09
+solver 10 (FDToep nor eqns)...
+	check nor eqns rel resid 1.09e-12
+	0.146 s   	rel l2 err 2.03e-12    	resid rel l2 nrm 1.79e-12
+
+------------- NU dist=2 (quadrature pts): -----------------
+
+dense (slow exact) b and resid meas... kappa(A) = 6.62
+solver 1 (dense direct)...
+	0.915 s   	rel l2 err 3.22e-15    	resid rel l2 nrm 3.03e-15
+solver 2 (CG normal eqns)...
+	flag=0, with 24 iters (rel resid nrm 8.8e-07)
+	0.00674 s   	rel l2 err 1.16e-06    	resid rel l2 nrm 1.17e-06
+solver 3 (Strang PCG nor eqns)...
+	flag=0, with 7 iters (rel resid nrm 1.28e-07)
+	0.00327 s   	rel l2 err 6.16e-08    	resid rel l2 nrm 8.44e-08
+solver 4 (adj matvec sinc2 wei)...
+	0.00142 s   	rel l2 err 0.0102    	resid rel l2 nrm 0.0475
+solver 5 (FP adj wei)...
+	done with 9 iters (rel resid nrm 2.58e-07)
+	0.00727 s   	rel l2 err 5.17e-08    	resid rel l2 nrm 2.58e-07
+solver 6 (CG adj nor eqns)...
+	flag=0, with 25 iters (rel resid nrm 6.27e-07)
+	0.0219 s   	rel l2 err 4.93e-07    	resid rel l2 nrm 6.27e-07
+solver 7 (sinc2 PCG adj nor)...
+	flag=0, with 5 iters (rel resid nrm 7.47e-08)
+	0.00743 s   	rel l2 err 3.18e-08    	resid rel l2 nrm 7.47e-08
+solver 8 (GMRES adj nor eqns)...
+	flag=0, with 24 iters (rel resid nrm 5.9e-07)
+	0.101 s   	rel l2 err 5.82e-07    	resid rel l2 nrm 5.9e-07
+solver 9 (INUDFT, wrapped)...
+	INUDFT failed!
+	Index in position 2 exceeds array bounds. Index must not exceed 64.
+	0.0082 s   	rel l2 err NaN    	resid rel l2 nrm NaN
+solver 10 (FDToep nor eqns)...
+	check nor eqns rel resid 1.08e-11
+	0.141 s   	rel l2 err 1.95e-12    	resid rel l2 nrm 3.98e-12
+
+------------- NU dist=3 (rand unif iid): -----------------
+
+dense (slow exact) b and resid meas... kappa(A) = 1e+03
+solver 1 (dense direct)...
+	0.905 s   	rel l2 err 3.68e-14    	resid rel l2 nrm 3.01e-15
+solver 2 (CG normal eqns)...
+	flag=0, with 746 iters (rel resid nrm 9.9e-07)
+	0.174 s   	rel l2 err 0.0121    	resid rel l2 nrm 3.74e-05
+solver 3 (Strang PCG nor eqns)...
+	flag=1, with 966 iters (rel resid nrm 0.000387)
+	0.231 s   	rel l2 err 0.335    	resid rel l2 nrm 0.00483
+solver 4 (adj matvec sinc2 wei)...
+	0.00144 s   	rel l2 err 0.463    	resid rel l2 nrm 0.251
+solver 5 (FP adj wei)...
+	stopped at maxit=1000 (rel resid nrm 0.00187)
+	0.61 s   	rel l2 err 0.0991    	resid rel l2 nrm 0.00187
+solver 6 (CG adj nor eqns)...
+	flag=1, with 982 iters (rel resid nrm 3.74e-05)
+	0.706 s   	rel l2 err 0.00451    	resid rel l2 nrm 3.74e-05
+solver 7 (sinc2 PCG adj nor)...
+	flag=0, with 952 iters (rel resid nrm 8.78e-07)
+	0.774 s   	rel l2 err 2.63e-06    	resid rel l2 nrm 8.78e-07
+solver 8 (GMRES adj nor eqns)...
+	flag=0, with 821 iters (rel resid nrm 9.35e-07)
+	12.4 s   	rel l2 err 0.000273    	resid rel l2 nrm 9.35e-07
+solver 9 (INUDFT, wrapped)...
+Warning: Matrix is close to singular or badly scaled. Results may be inaccurate.
+RCOND =  1.927742e-16. 
+> In hss_urv_fact_solve>urv_solve_recursion (line 31)
+In hss_urv_fact_solve>urv_solve_recursion (line 47)
+In hss_urv_fact_solve>urv_solve_recursion (line 48)
+In hss_urv_fact_solve>urv_solve_recursion (line 47)
+In hss_urv_fact_solve>urv_solve_recursion (line 47)
+In hss_urv_fact_solve (line 7)
+In urv_solve (line 8)
+In hss_least_squares_solve (line 7)
+In \ (line 15)
+In INUDFT (line 66)
+In wrapper_INUDFT (line 25)
+In test_iNUDFT (line 66)
+ 
+	0.234 s   	rel l2 err 2.33e+14    	resid rel l2 nrm 2.54e+14
+solver 10 (FDToep nor eqns)...
+	check nor eqns rel resid 4.92e-13
+	0.141 s   	rel l2 err 1.81e-09    	resid rel l2 nrm 8.54e-12
+
+------------- NU dist=4 (rand iid w/ gap): -----------------
+
+dense (slow exact) b and resid meas... kappa(A) = 1.44e+06
+solver 1 (dense direct)...
+	0.914 s   	rel l2 err 5.18e-11    	resid rel l2 nrm 3.18e-15
+solver 2 (CG normal eqns)...
+	flag=0, with 737 iters (rel resid nrm 9.75e-07)
+	0.157 s   	rel l2 err 0.0776    	resid rel l2 nrm 5.63e-05
+solver 3 (Strang PCG nor eqns)...
+	flag=1, with 992 iters (rel resid nrm 0.000599)
+	0.246 s   	rel l2 err 0.312    	resid rel l2 nrm 0.00607
+solver 4 (adj matvec sinc2 wei)...
+	0.00171 s   	rel l2 err 0.502    	resid rel l2 nrm 0.264
+solver 5 (FP adj wei)...
+	stopped at maxit=1000 (rel resid nrm 0.00169)
+	0.658 s   	rel l2 err 0.122    	resid rel l2 nrm 0.00169
+solver 6 (CG adj nor eqns)...
+	flag=1, with 1000 iters (rel resid nrm 0.000366)
+	0.78 s   	rel l2 err 0.0673    	resid rel l2 nrm 0.000366
+solver 7 (sinc2 PCG adj nor)...
+	flag=1, with 999 iters (rel resid nrm 1.86e-05)
+	0.8 s   	rel l2 err 0.0599    	resid rel l2 nrm 1.86e-05
+solver 8 (GMRES adj nor eqns)...
+	flag=0, with 877 iters (rel resid nrm 9.3e-07)
+	13.6 s   	rel l2 err 0.0504    	resid rel l2 nrm 9.3e-07
+solver 9 (INUDFT, wrapped)...
+	INUDFT failed!
+	Index in position 1 exceeds array bounds. Index must not exceed 41.
+	0.0587 s   	rel l2 err NaN    	resid rel l2 nrm NaN
+solver 10 (FDToep nor eqns)...
+	check nor eqns rel resid 3.51e-13
+	0.15 s   	rel l2 err 0.00492    	resid rel l2 nrm 6.67e-09
+>> 
