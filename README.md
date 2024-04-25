@@ -8,7 +8,7 @@ This repository contains code for a superfast solver for the inverse type-II non
 "A superfast direct inversion method for the nonuniform discrete Fourier transform," H. Wilber, E. N. Epperley, and A. H. Barnett, 26 pages,
 submitted, SIAM J. Sci. Comput., 2024. https://arxiv.org/abs/2404.13223
 
-It you find this code useful, please cite that paper.
+It you find this code useful, please cite that paper and this repo.
 
 *Warning*: this is currently research code that will gradually get cleaned up over time (at which point, interfaces may break). Use at your own risk.
 
@@ -28,20 +28,21 @@ gamma = exp(2i*pi*p);    % their Vandermonde nodes on unit circle
 w = 0:n-1;               % row vec of the frequency indices
 xtrue = randn(n,1) + 1i*randn(n,1);    % choose Fourier coeffs at said indices
 V = gamma(:).^w;         % dense fill Vandermonde matrix (only for small tests)
-b = V*xtrue;             % direct generate RHS (only for small tests)
-tic;                     % time our solver
-x = INUDFT(gamma,n,b);   % solve one RHS with default tolerance
+b = V*xtrue;             % directly generate RHS (only for small tests)
+tic;                     % time our solver...
+x = INUDFT(gamma,n,b);   % solve one RHS, using default tolerance
 fprintf('solve in %.3g s: rel l2 resid norm %.3g, rel l2 soln error norm %.3g\n', toc, norm(V*x-b)/norm(b), norm(x-xtrue)/norm(x))
 ```
-This completes in less than a second with the output:
+This completes in less than a second on a modern machine with typical output:
 ```
-done in 0.23 s: rel l2 resid norm 3.81e-11, rel l2 soln error norm 2.96e-10
+solve in 0.235 s: rel l2 resid norm 3.13e-11, rel l2 soln error norm 1.51e-10
 ```
-For comparison, MATLAB's dense direct solver takes 7 seconds for this problem.
+For comparison, MATLAB's dense direct solver takes 7 seconds for this problem
+on the same machine.
 The condition number is $\kappa_2(V) \approx 1.03 \times 10^3$ (for random seed `rng(0)`).
-For complete code see `small_example.m` in the top directory.
+For complete code see `example_small.m` in the top directory.
 
-Next, look in `Code/itersolv` and its README for documented implementations of all iterative solution methods, `Code/wrapper_INUDFT`,
+Next, look in `Code/itersolv/` and its README for documented implementations of all iterative solution methods, `Code/wrapper_INUDFT.m`,
 and the comparison code `test_iNUDFT.m`. They all use a different convention
 with nodes in $[0,2\pi)$ and symmetrized frequencies, as in FINUFFT.
 Also see [FINUFFT iterative inversion tutorial](https://finufft.readthedocs.io/en/latest/tutorial/inv1d2.html) which uses the latter notation for this same task.
@@ -58,12 +59,12 @@ To generate data for larger tests in linear time, or to run the iterative solver
 
 Some of our comparions tests, figure-generating codes, and benchmarking need the additional packages:
 
-     * [NFFT3.5](https://github.com/NFFT/nfft)  (in particular, its MATLAB interfaces in `infft1d`). Please compile its MEX files, run its self-tests, then insure its file `infft.m` is in your path. This is needed for comparison tests to the Kircheis--Potts sparse direct algorithm of 2022.
-     * [chebfun](https://www.chebfun.org/) package (only to produce Clenshaw--Curtis points in certain files)
-     * [export-fig](https://github.com/altmany/export_fig) package (to produce PDFs of figures found in the paper)
-     * [linspecer](https://github.com/davidkun/linspecer) package (for plot colors)
-     * [memorygraph](https://github.com/ahbarnett/memorygraph) for measuring RAM and CPU usage vs time
+   * [NFFT3.5](https://github.com/NFFT/nfft)  (in particular, its MATLAB interfaces in `infft1d`). Please compile its MEX files, run its self-tests, then insure its file `infft.m` is in your path. This is needed for comparison tests to the Kircheis--Potts sparse direct algorithm of 2022.
+   * [chebfun](https://www.chebfun.org/) package (only to produce Clenshaw--Curtis points in certain files)
+   * [export-fig](https://github.com/altmany/export_fig) package (to produce PDFs of figures found in the paper)
+   * [linspecer](https://github.com/davidkun/linspecer) package (for plot colors)
+   * [memorygraph](https://github.com/ahbarnett/memorygraph) for measuring RAM and CPU usage vs time
 
-Please contact us if you have problems running the basic example above, but not for problems running the comparison tests, figure-generating codes, or integration with other packages listed above.
+Please contact us if you have problems running the basic example above, but not for problems running the research comparison tests, figure-generating codes, or integration with other packages listed above.
 
 
