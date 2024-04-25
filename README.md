@@ -51,7 +51,8 @@ Also see [FINUFFT iterative inversion tutorial](https://finufft.readthedocs.io/e
 ### Installation
 
 The inverse NUDFT solver itself has no package dependencies and should
-run on any recent MATLAB version (eg R2021 or later).
+run on any recent MATLAB version (eg R2021 or later). It contains a modification
+of a snapshot from 2019 of the GPL-licensed [hm-toolbox](https://github.com/numpi/hm-toolbox) by Massei, Robol, and Kressner.
 
 To generate data for larger tests in linear time, or to run the iterative solvers, one needs to install:
 
@@ -68,3 +69,12 @@ Some of our comparions tests, figure-generating codes, and benchmarking need the
 Please contact us if you have problems running the basic example above, but not for problems running the research comparison tests, figure-generating codes, or integration with other packages listed above.
 
 
+### To do
+
+* separate solver library, tests, and other method implementations.
+
+* large-scale example using FINUFFT for setup and residual test.
+
+* update to use a modified fork of hm-toolbox as a separate repo, or integrate as PR into that toolbox, or remove any code dependency.
+
+* octave compatibility (by updating hm-toolbox?)
