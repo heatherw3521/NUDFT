@@ -9,7 +9,7 @@ function [c,fact] = wrapper_INUDFT(x,N,b,opts)
 %   fast direct solver.
 %
 % c = wrapper_INUDFT(x,N,b,opts) controls various options such as:
-%   optstol - solver requested relative tolerance
+%   opts.hsstol - solver requested relative tolerance
 %
 % For test: see test_iNUDFT
 
