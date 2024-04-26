@@ -29,7 +29,7 @@ function [c w] = solv_Kirchwei(x,N,b,opts)
 %           (*** factor 2pi to sort out)
 %
 % For test: i) run without arguments (only passes nudist=0).
-%           ii) test_iNUDFT as tested by notathreat_Kirchwei
+%           ii) test_iNUDFT as tested by a Kirchwei driver.
 %
 % Reference:
 %  Kircheis M and Potts D (2023), "Fast and direct inversion methods for the
@@ -65,7 +65,7 @@ c = finufft1d1(x, w.*b, -1, opts.tol, N);  % A^*Wb, note isign=-1 rel to t2
 
 %%%%%
 function test_solv_Kirchwei          % simple tester cut down from solv_dense
-N = 1e3;             % # modes (unknowns)
+N = 2e3;             % # modes (unknowns), small problem
 rng(0)
 c0 = randn(N,1) + 1i*randn(N,1);    % the true coeffs
 M = ceil(2.2*N);             % # NU pts (eqns)
@@ -88,3 +88,4 @@ for nudist = 0:2  % set up various NU pt distns (easy to hard)............
   resid = finufft1d2(x,+1,tol,c) - b;
   fprintf('rel l2 soln err %.3g,   resid rel l2 nrm %3g\n', norm(c-c0)/norm(c0), norm(resid)/norm(b))
 end                                         % ..............
+% only passes test for nudist=0 (1 and 2 fail to converge solving weights).
